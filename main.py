@@ -10,7 +10,7 @@ class DispenseRequest(BaseModel):
     device_id: str
 
 @app.post("/api/v1/dispense/request")
-def dispense(request: DispenseRequest, x_api_key: str = Header()):
+def dispense(request: DispenseRequest, x_api_key: str = Header(...)):
     if x_api_key != API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API key.")
 
